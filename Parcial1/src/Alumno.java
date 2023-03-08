@@ -1,34 +1,53 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-class Alumno {
+public class Alumno {
+
+
+
+    public static ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+
+
+    private String nombre;
+    private int edad;
+    private int identificacion;
+    private String barrio;
+    private int grado;
+    private String especialidad;
+    private boolean matriculaPagada;
+
     public static void inscribirAlumno(ArrayList<Alumno> listaAlumnos) {
         Scanner scanner = new Scanner(System.in);
-
+    
+        if (listaAlumnos.size() >= 4) {
+            System.out.println("No se pueden inscribir más alumnos. Ya se han inscrito 4.");
+            return;
+        }
+    
         System.out.println("Ingrese el nombre del alumno:");
         String nombre = scanner.nextLine();
-
+    
         System.out.println("Ingrese la edad del alumno:");
         int edad = scanner.nextInt();
         scanner.nextLine();
-
+    
         System.out.println("Ingrese el número de identificación del alumno:");
         int identificacion = scanner.nextInt();
         scanner.nextLine();
-
+    
         System.out.println("Ingrese el barrio del alumno:");
         String barrio = scanner.nextLine();
-
+    
         System.out.println("Ingrese el grado del alumno (1-11):");
         int grado = scanner.nextInt();
         scanner.nextLine();
-
+    
         String especialidad = "";
         if (grado >= 6 && grado <= 11) {
             System.out.println("Ingrese la especialidad del alumno (I, E, S, P):");
             especialidad = scanner.nextLine();
         }
-
+    
         Alumno alumno;
         if (grado >= 1 && grado <= 5) {
             alumno = new Alumno(nombre, edad, identificacion, barrio, grado, "", false);
@@ -38,12 +57,13 @@ class Alumno {
             System.out.println("Grado inválido");
             return;
         }
-
+    
         // Agregamos el nuevo alumno a la lista global de alumnos
         listaAlumnos.add(alumno);
-
+    
         System.out.println("El alumno ha sido inscrito exitosamente.");
     }
+    
 
     // Se agregan los atributos que faltan en el constructor
     public Alumno(String nombre, int edad, int identificacion, String barrio, int grado, String especialidad,
@@ -63,13 +83,7 @@ class Alumno {
     }
 
     // Getters y setters para los atributos de la clase Alumno
-    private String nombre;
-    private int edad;
-    private int identificacion;
-    private String barrio;
-    private int grado;
-    private String especialidad;
-    private boolean matriculaPagada;
+
 
     public String getNombre() {
         return nombre;
@@ -141,7 +155,7 @@ class Alumno {
 
     }
 
-    public void calcularPago() {
+    public int calcularPago() {
         int valorMatricula = 0;
         int valorEspecialidad = 0;
         int valorDerechosGrado = 0;
@@ -197,5 +211,36 @@ class Alumno {
         
         return valorEspecialidad;
     }
+    public static void buscarPorGrado(ArrayList<Alumno> listaAlumnos, int gradoBuscado) {
+        
+        boolean encontrado = false;
+        for (Alumno alumno : listaAlumnos) {
+            if (alumno.getGrado() == gradoBuscado) {
+                System.out.println("\nEstudiantes en el grado " + gradoBuscado + ":");
+
+                alumno.imprimirAlumno();
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontraron estudiantes en el grado " + gradoBuscado);
+        }
+    }
+
+    public static Alumno buscarPorIdentificacion(ArrayList<Alumno> listaAlumnos, int identificacionBuscada) {
+        for (Alumno alumno : listaAlumnos) {
+            if (alumno.getIdentificacion() == identificacionBuscada) {
+                System.out.println("\nEstudiante encontrado:");
+                alumno.imprimirAlumno();
+                return alumno;
+            }
+        }
+        System.out.println("No se encontró ningún estudiante con la identificación " + identificacionBuscada);
+        return null;
+    }
+    
+
+
+    
     
 }
