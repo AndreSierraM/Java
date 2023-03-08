@@ -1,29 +1,75 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
-public class Alumno {
-    private String nombre;
-    private int edad;
-    private String identificacion;
-    private String barrio;
-    private int grado;
-    private String especialidad;
+class Alumno {
+    public static void inscribirAlumno(ArrayList<Alumno> listaAlumnos) {
+        Scanner scanner = new Scanner(System.in);
 
-    public Alumno(String nombre, int edad, String identificacion, String barrio, int grado) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.identificacion = identificacion;
-        this.barrio = barrio;
-        this.grado = grado;
+        System.out.println("Ingrese el nombre del alumno:");
+        String nombre = scanner.nextLine();
+
+        System.out.println("Ingrese la edad del alumno:");
+        int edad = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Ingrese el número de identificación del alumno:");
+        int identificacion = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Ingrese el barrio del alumno:");
+        String barrio = scanner.nextLine();
+
+        System.out.println("Ingrese el grado del alumno (1-11):");
+        int grado = scanner.nextInt();
+        scanner.nextLine();
+
+        String especialidad = "";
+        if (grado >= 6 && grado <= 11) {
+            System.out.println("Ingrese la especialidad del alumno (I, E, S, P):");
+            especialidad = scanner.nextLine();
+        }
+
+        Alumno alumno;
+        if (grado >= 1 && grado <= 5) {
+            alumno = new Alumno(nombre, edad, identificacion, barrio, grado, "", false);
+        } else if (grado >= 6 && grado <= 11) {
+            alumno = new Alumno(nombre, edad, identificacion, barrio, grado, especialidad, false);
+        } else {
+            System.out.println("Grado inválido");
+            return;
+        }
+
+        // Agregamos el nuevo alumno a la lista global de alumnos
+        listaAlumnos.add(alumno);
+
+        System.out.println("El alumno ha sido inscrito exitosamente.");
     }
 
-    public Alumno(String nombre, int edad, String identificacion, String barrio, int grado, String especialidad) {
+    // Se agregan los atributos que faltan en el constructor
+    public Alumno(String nombre, int edad, int identificacion, String barrio, int grado, String especialidad,
+            boolean matriculaPagada) {
         this.nombre = nombre;
         this.edad = edad;
         this.identificacion = identificacion;
         this.barrio = barrio;
         this.grado = grado;
         this.especialidad = especialidad;
+        this.matriculaPagada = matriculaPagada;
     }
+
+    // Se agregan los atributos que faltan en el constructor
+    public Alumno(String nombre, int edad, int identificacion, String barrio, int grado, boolean matriculaPagada) {
+        this(nombre, edad, identificacion, barrio, grado, "", matriculaPagada);
+    }
+
+    // Getters y setters para los atributos de la clase Alumno
+    private String nombre;
+    private int edad;
+    private int identificacion;
+    private String barrio;
+    private int grado;
+    private String especialidad;
+    private boolean matriculaPagada;
 
     public String getNombre() {
         return nombre;
@@ -41,11 +87,11 @@ public class Alumno {
         this.edad = edad;
     }
 
-    public String getIdentificacion() {
+    public int getIdentificacion() {
         return identificacion;
     }
 
-    public void setIdentificacion(String identificacion) {
+    public void setIdentificacion(int identificacion) {
         this.identificacion = identificacion;
     }
 
@@ -73,28 +119,83 @@ public class Alumno {
         this.especialidad = especialidad;
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public boolean isMatriculaPagada() {
+        return matriculaPagada;
+    }
 
-        int opcion = 0;
-        Alumno[] alumnos = new Alumno[4];
-        int cantidadAlumnos = 0;
+    public void setMatriculaPagada(boolean matriculaPagada) {
+        this.matriculaPagada = matriculaPagada;
+    }
 
-        do {
-            System.out.println("MENU");
-            System.out.println("1. Inscribir Alumno");
-            System.out.println("2. Mostrar Datos de los alumnos de un Grado");
-            System.out.println("3. Pagar Matrícula");
-            System.out.println("4. Salir");
+    // imprimirAlumno
+    public void imprimirAlumno() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Edad: " + edad);
+        System.out.println("Identificación: " + identificacion);
+        System.out.println("Barrio: " + barrio);
+        System.out.println("Grado: " + grado);
+        if (grado >= 6 && grado <= 11) {
+            System.out.println("Especialidad: " + especialidad);
+        }
+        System.out.println("Matricula Pagada: " + matriculaPagada);
 
-            opcion = scanner.nextInt();
+    }
 
-            switch(opcion) {
-                case 1:
-                    if (cantidadAlumnos == 4) {
-                        System.out.println("No se pueden inscribir más alumnos");
-                        break;
-                    }
-
-                    System.out.println("Ingrese el nombre del alumno:");
-
+    public void calcularPago() {
+        int valorMatricula = 0;
+        int valorEspecialidad = 0;
+        int valorDerechosGrado = 0;
+        
+        if (grado >= 1 && grado <= 5) {
+            valorMatricula = 650000;
+        } else if (grado >= 6 && grado <= 8) {
+            valorMatricula = 700000;
+            valorEspecialidad = calcularValorEspecialidad();
+        } else if (grado >= 9 && grado <= 10) {
+            valorMatricula = 720000;
+            valorEspecialidad = calcularValorEspecialidad();
+        } else if (grado == 11) {
+            valorMatricula = 800000;
+            valorEspecialidad = calcularValorEspecialidad();
+            valorDerechosGrado = 580000;
+        } else {
+            System.out.println("Grado inválido");
+            return;
+        }
+        
+        System.out.println("Valor de la matrícula: " + valorMatricula);
+        if (valorEspecialidad > 0) {
+            System.out.println("Valor de la especialidad: " + valorEspecialidad);
+        }
+        if (valorDerechosGrado > 0) {
+            System.out.println("Valor de los derechos de grado: " + valorDerechosGrado);
+        }
+        valorMatricula += valorEspecialidad + valorDerechosGrado;
+        System.out.println("Valor total a pagar: " + valorMatricula);
+    }
+    
+    private int calcularValorEspecialidad() {
+        int valorEspecialidad = 0;
+        
+        switch (especialidad) {
+            case "I":
+                valorEspecialidad = 500000;
+                break;
+            case "E":
+                valorEspecialidad = 350000;
+                break;
+            case "S":
+                valorEspecialidad = 520000;
+                break;
+            case "P":
+                valorEspecialidad = 400000;
+                break;
+            default:
+                System.out.println("Especialidad inválida");
+                break;
+        }
+        
+        return valorEspecialidad;
+    }
+    
+}
