@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Alumno {
     //  creamo los atributos de la clase alumno
     public String nombre;
@@ -94,15 +95,34 @@ public class Alumno {
 
 // creamos el metodo imprimir para imprimir los datos del estudiante
 
-public void Imprimir_Grado() {
-	System.out.println("Nombre: " + this.nombre);
-	System.out.println("Apellido: " + this.apellido);
-	System.out.println("Edad: " + this.edad);
-	System.out.println("Identificacion: " + this.identificacion);
-	System.out.println("Barrio: " + this.barrio);
-	System.out.println("Grado: " + this.grado);
-	System.out.println("Especialidad: " + this.especialidad);
-}
+    public void Imprimir() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Apellido: " + apellido);
+        System.out.println("Edad: " + edad);
+        System.out.println("Identificacion: " + identificacion);
+        System.out.println("Barrio: " + barrio);
+        System.out.println("Grado: " + grado);
+        System.out.println("Especialidad: " + especialidad);
+    }
+
+    // creamos el metodo imprimir_grado para imprimir los datos de los estudiantes de un grado
+    public static void Imprimir_Grado() {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el grado que desea consultar");
+        String grado = sc.next();
+        if (grado.equals("1") || grado.equals("2") || grado.equals("3") || grado.equals("4") || grado.equals("5")) {
+            System.out.println("Los estudiantes del grado " + grado + " son: ");
+            for (int i = 0; i < Main.alumnos.size(); i++) {
+                if (Main.alumnos.get(i).getGrado().equals(grado)) {
+                    Main.alumnos.get(i).Imprimir();
+                }
+            }
+        } else {
+            System.out.println("El grado ingresado no es valido");
+        }
+    }
+
 
 
 
