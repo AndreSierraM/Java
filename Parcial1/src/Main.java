@@ -18,38 +18,35 @@ public class Main {
         do {
             switch (opcion) {
                 case 1:
-                    System.out.println("Ingrese el nombre del alumno");
-                    String nombre = sc.next();
-                    System.out.println("Ingrese el apellido del alumno");
-                    String apellido = sc.next();
-                    System.out.println("Ingrese la edad del alumno");
-                    int edad = sc.nextInt();
-                    System.out.println("Ingrese la identificacion del alumno");
-                    String identificacion = sc.next();
-                    System.out.println("Ingrese el barrio del alumno");
-                    String barrio = sc.next();
-                    System.out.println("Ingrese el grado del alumno");
-                    String grado = sc.next();
-                    if (grado.equals("1") || grado.equals("2") || grado.equals("3") || grado.equals("4")
-                            || grado.equals("5")) {
-                        Alumno alumno = new Alumno(nombre, apellido, edad, identificacion, barrio, grado);
-                    } else {
-                        System.out.println("Ingrese la especialidad del alumno");
-                        System.out.println(
-                                " Especialidades dispomibles: I, E, S, P (Idiomas, Electricidad, Sistemas,Pedagogía)");
-                        String especialidad = sc.next();
-
-                        especialidad = especialidad.toUpperCase();
-                        if (especialidad.equals("I") || especialidad.equals("E") || especialidad.equals("S")
-                                || especialidad.equals("P")) {
-                            Alumno alumno = new Alumno(nombre, apellido, edad, identificacion, barrio, grado,
-                                    especialidad);
-
-                        } else {
-                            System.out.println("Especialidad no valida");
-                        }
-
-                    }
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Ingrese el nombre del estudiante");
+                String nombre = sc.next();
+                System.out.println("Ingrese el apellido del estudiante");
+                String apellido = sc.next();
+                System.out.println("Ingrese la edad del estudiante");
+                int edad = sc.nextInt();
+                System.out.println("Ingrese la identificacion del estudiante");
+                String identificacion = sc.next();
+                System.out.println("Ingrese el barrio del estudiante");
+                String barrio = sc.next();
+                System.out.println("Ingrese el grado del estudiante");
+                String grado = sc.next();
+                if (grado.equals("1") || grado.equals("2") || grado.equals("3") || grado.equals("4") || grado.equals("5")) {
+                    Alumno alumno = new Alumno(nombre, apellido, edad, identificacion, barrio, grado);
+                    Main.alumnos.add(alumno);
+                } else {
+                    System.out.println("Ingrese la especialidad del estudiante");
+                    System.out.println("I. Idiomás");
+                    System.out.println("E. Electricidad");
+                    System.out.println("S. Sistemas");
+                    System.out.println("P. Pedagogía");
+                    String especialidad = sc.next();
+                    especialidad = especialidad.toUpperCase();
+                    Alumno alumno = new Alumno(nombre, apellido, edad, identificacion, barrio, grado, especialidad);
+                    Main.alumnos.add(alumno);
+                    
+                }
+            }
                     Alumno.Imprimir_Grado();
                     break;
 
@@ -88,7 +85,6 @@ public class Main {
 
             }
 
-        } while (opcion != 0);
+        }while(opcion!=0);
 
-    }
-}
+}}

@@ -9,6 +9,7 @@ public class Alumno {
     public String grado;
 
 
+    // array de alumnos 
     // creamos los metodos get y set de la clase alumno
     public String getNombre() {
         return nombre;
@@ -104,6 +105,15 @@ public class Alumno {
         System.out.println("Grado: " + grado);
         System.out.println("Especialidad: " + especialidad);
     }
+ 
+    
+    
+    
+
+
+
+
+  
 
     // creamos el metodo imprimir_grado para imprimir los datos de los estudiantes de un grado
     public static void Imprimir_Grado() {
