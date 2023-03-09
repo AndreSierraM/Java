@@ -3,11 +3,15 @@ import java.util.ArrayList;
 
 public class Main {
     public static void mostrarMenuPrincipal(ArrayList<Alumno> listaAlumnos) {
+        Alumno alumno1 = new Alumno("Juan", 15, 123456, "Bosa", 1, "");
+        Alumno alumno2 = new Alumno("Pedro", 16, 123457, "Bosa", 2, "");
+        Alumno alumno3 = new Alumno("Maria", 17, 123458, "Bosa", 1, "");
 
-        Alumno alumno1 = new Alumno("Juan", 15, 123456, "Bosa", 1, "", false);
-        Alumno alumno2 = new Alumno("Pedro", 16, 123457, "Kennedy", 2, "", false);
-        Alumno alumno3 = new Alumno("Maria", 17, 123458, "Suba", 3, "", false);
-        Alumno alumno4 = new Alumno("Ana", 18, 123459, "Engativa", 4, "", false);
+        Alumno alumno4 = new Alumno("Ana", 18, 123459, "Bosa", 2, "");
+
+        listaAlumnos.add(alumno1);
+        listaAlumnos.add(alumno2);
+        listaAlumnos.add(alumno3);
 
         Scanner scanner = new Scanner(System.in);
         boolean salir = false;
@@ -25,29 +29,23 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    Alumno.inscribirAlumno(listaAlumnos);
+                    Alumno.inscribirAlumno(listaAlumnos, scanner);
                     break;
+
                 case 2:
                     System.out.print("\nIngrese el grado que desea buscar: ");
                     int gradoBuscado = scanner.nextInt();
                     scanner.nextLine();
                     Alumno.buscarPorGrado(listaAlumnos, gradoBuscado);
                     break;
+
                 case 3:
                     System.out.println("\nCalcular Pago");
-                    System.out.print("\nIngrese la de identificación del alumno al que le desea calcular el pago: ");
-                    int identificacionBuscada = scanner.nextInt();
-                    scanner.nextLine();
-                    // mandamos a llamar al método buscarPorIdentificacion
-                    Alumno alumnoBuscado = Alumno.buscarPorIdentificacion(listaAlumnos, identificacionBuscada);
-                    // mandamos la indentificación del alumno buscado para calcular el pago
-                    if (alumnoBuscado != null) {
-                        // mandamos la indentificación del alumno buscado para calcular el pago
-                        alumnoBuscado.calcularPago(identificacionBuscada, listaAlumnos);
-
-                    }
-
+                    Alumno.calcularPago(listaAlumnos);
                     break;
+
+
+                  
                 case 4:
                     salir = true;
                     break;
@@ -60,8 +58,9 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+        Scanner scanner = new Scanner(System.in);
         mostrarMenuPrincipal(listaAlumnos);
-
+        Alumno.inscribirAlumno(listaAlumnos, scanner);
     }
 
 }
