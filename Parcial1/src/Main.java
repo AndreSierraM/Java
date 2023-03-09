@@ -6,12 +6,12 @@ public class Main {
         Alumno alumno1 = new Alumno("Juan", 15, 123456, "Bosa", 1, "");
         Alumno alumno2 = new Alumno("Pedro", 16, 123457, "Bosa", 2, "");
         Alumno alumno3 = new Alumno("Maria", 17, 123458, "Bosa", 1, "");
-
-        Alumno alumno4 = new Alumno("Ana", 18, 123459, "Bosa", 2, "");
+        Alumno alumno4 = new Alumno("Ana", 18, 123459, "Bosa", 10, "I");
 
         listaAlumnos.add(alumno1);
         listaAlumnos.add(alumno2);
         listaAlumnos.add(alumno3);
+        listaAlumnos.add(alumno4);
 
         Scanner scanner = new Scanner(System.in);
         boolean salir = false;
@@ -44,8 +44,6 @@ public class Main {
                     Alumno.calcularPago(listaAlumnos);
                     break;
 
-
-                  
                 case 4:
                     salir = true;
                     break;

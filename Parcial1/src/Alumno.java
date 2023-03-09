@@ -20,29 +20,29 @@ public class Alumno {
             return;
         }
 
-        System.out.println("Ingrese el nombre del alumno:");
+        System.out.print("Ingrese el nombre del alumno:");
         String nombre = scanner.nextLine();
 
         System.out.println("Ingrese la edad del alumno:");
         int edad = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Ingrese el número de identificación del alumno:");
+        System.out.print("Ingrese el número de identificación del alumno:");
         int identificacion = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Ingrese el barrio del alumno:");
+        System.out.print("Ingrese el barrio del alumno:");
         String barrio = scanner.nextLine();
 
-        System.out.println("Ingrese el grado del alumno (1-11):");
+        System.out.print("Ingrese el grado del alumno (1-11):");
         int grado = scanner.nextInt();
         scanner.nextLine();
 
         String especialidad = "";
         if (grado >= 6 && grado <= 11) {
-            System.out.println("Ingrese la especialidad del alumno (I, E, S, P):");
+            System.out.print("Ingrese la especialidad del alumno (I, E, S, P):");
             especialidad = scanner.nextLine();
-            
+
         }
 
         // Creamos el objeto Alumno donde se almacenará la información del alumno
@@ -183,16 +183,16 @@ public class Alumno {
 
             // Calcular valor de especialidad
             switch (especialidad) {
-                case "Idiomas":
+                case "I":
                     valorEspecialidad = 500000;
                     break;
-                case "Electricidad":
+                case "E":
                     valorEspecialidad = 350000;
                     break;
-                case "Sistemas":
+                case "S":
                     valorEspecialidad = 520000;
                     break;
-                case "Pedagogía":
+                case "P":
                     valorEspecialidad = 400000;
                     break;
                 default:
