@@ -39,15 +39,7 @@ https://app.diagrams.net/?src=about
 
 
 
-+----------------+           +---------------+
-|    <<class>>   |           |   <<class>>  |
-|     Alumno     |           |     Scanner   |
-+----------------+           +---------------+
-| - nombre: String|           |               |
-| - edad: int     |           |               |
-| - identificacion: int|      +---------------+
-| - barrio: String     +--------------------+
-     |      Alumno        |
+
      +--------------------+
      | - nombre: String   |
      | - edad: int        |
