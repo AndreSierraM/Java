@@ -1,19 +1,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+
 public class Main {
-    public static void mostrarMenuPrincipal(ArrayList<Alumno> listaAlumnos) {
-        Alumno alumno1 = new Alumno("Juan", 15, 123456, "Bosa", 1, "");
-        Alumno alumno2 = new Alumno("Pedro", 16, 123457, "Bosa", 2, "");
-        Alumno alumno3 = new Alumno("Maria", 17, 123458, "Bosa", 1, "");
-        Alumno alumno4 = new Alumno("Ana", 18, 123459, "Bosa", 10, "I");
 
-        listaAlumnos.add(alumno1);
-        listaAlumnos.add(alumno2);
-        listaAlumnos.add(alumno3);
-        listaAlumnos.add(alumno4);
-
-        Scanner scanner = new Scanner(System.in);
+    public static void mostrarMenuPrincipal(ArrayList<Alumno> listaAlumnos, Scanner scanner) {
         boolean salir = false;
 
         while (!salir) {
@@ -24,13 +15,23 @@ public class Main {
             System.out.println("4. Salir");
 
             System.out.print("\nIngrese su opción: ");
+            
+            // Validar entrada del usuario
+            if (!scanner.hasNextInt()) {
+                System.out.println("Opción inválida, por favor intente de nuevo.");
+                scanner.nextLine();
+                continue;
+            }
+            
             int opcion = scanner.nextInt();
             scanner.nextLine();
 
             switch (opcion) {
                 case 1:
-                    Alumno.inscribirAlumno(listaAlumnos, scanner);
-                    break;
+                Alumno.inscribirAlumno(listaAlumnos, scanner);
+                System.out.println("Alumno inscrito con éxito.");
+                break;
+            
 
                 case 2:
                     System.out.print("\nIngrese el grado que desea buscar: ");
@@ -42,10 +43,14 @@ public class Main {
                 case 3:
                     System.out.println("\nCalcular Pago");
                     Alumno.calcularPago(listaAlumnos);
+                    System.out.println("Pago de matrícula realizado con éxito.");
                     break;
 
                 case 4:
                     salir = true;
+                    break;
+                case 5:
+                    Alumno.mostrarAlumnos(listaAlumnos);
                     break;
                 default:
                     System.out.println("Opción inválida, por favor intente de nuevo.");
@@ -57,8 +62,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
         Scanner scanner = new Scanner(System.in);
-        mostrarMenuPrincipal(listaAlumnos);
-        Alumno.inscribirAlumno(listaAlumnos, scanner);
+        mostrarMenuPrincipal(listaAlumnos, scanner);
     }
 
 }

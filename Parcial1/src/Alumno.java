@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Alumno {
 
-    public static ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+    public static ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>(); 
 
     private String nombre;
     private int edad;
@@ -14,37 +14,48 @@ public class Alumno {
 
     public static void inscribirAlumno(ArrayList<Alumno> listaAlumnos, Scanner scanner) {
         // Verificamos que no se hayan inscrito más de 4 alumnos
-
         if (listaAlumnos.size() >= 4) {
             System.out.println("No se pueden inscribir más alumnos. Ya se han inscrito 4.");
             return;
+        } else {
+            System.out.println("Se pueden inscribir " + (4 - listaAlumnos.size()) + " alumnos más.");
         }
-
+    
         System.out.print("Ingrese el nombre del alumno:");
         String nombre = scanner.nextLine();
-
+    
         System.out.println("Ingrese la edad del alumno:");
         int edad = scanner.nextInt();
         scanner.nextLine();
-
+    
         System.out.print("Ingrese el número de identificación del alumno:");
         int identificacion = scanner.nextInt();
         scanner.nextLine();
-
+    
+        if (identificacion < 0) {
+            System.out.println("El número de identificación no puede ser negativo.");
+            return;
+        }
+    
         System.out.print("Ingrese el barrio del alumno:");
         String barrio = scanner.nextLine();
-
+    
         System.out.print("Ingrese el grado del alumno (1-11):");
         int grado = scanner.nextInt();
         scanner.nextLine();
-
+    
+        if (grado < 1 || grado > 11) {
+            System.out.println("El grado ingresado es inválido. Debe ser un número entre 1 y 11.");
+            return;
+        }
+    
         String especialidad = "";
         if (grado >= 6 && grado <= 11) {
             System.out.print("Ingrese la especialidad del alumno (I, E, S, P):");
             especialidad = scanner.nextLine();
-
+            especialidad = especialidad.toUpperCase();
         }
-
+    
         // Creamos el objeto Alumno donde se almacenará la información del alumno
         Alumno alumno;
         if (especialidad.equals("")) {
@@ -52,18 +63,13 @@ public class Alumno {
         } else {
             alumno = new Alumno(nombre, edad, identificacion, barrio, grado, especialidad);
         }
-
-        // imprimimos la lista
-        System.out.println(listaAlumnos);
-
+    
         // Agregamos el objeto Alumno a la lista de alumnos
         listaAlumnos.add(alumno);
-
-        // imprimimos la lista
-        System.out.println(listaAlumnos);
-
+    
         System.out.println("El alumno ha sido inscrito exitosamente.");
     }
+    
 
     public Alumno(String nombre, int edad, int identificacion, String barrio, int grado, String especialidad) {
         this.nombre = nombre;
@@ -246,6 +252,10 @@ public class Alumno {
             System.out.println("\n------------------------\n");
         }
 
+    }
+
+
+    public static void mostrarAlumnos(ArrayList<Alumno> listaAlumnos2) {
     }
 
 }
