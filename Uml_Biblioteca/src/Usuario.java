@@ -3,11 +3,11 @@ import java.util.ArrayList;
 public class Usuario {
     private String user;
     private String contraseña;
-    private ArrayList<Usuario> users_registrados;
+    private ArrayList<Usuario> users_registrados = new ArrayList<Usuario>();
 
     public Usuario(String user, String contraseña) {
-        this.user=user;
-        this.contraseña=contraseña;
+        this.user = user;
+        this.contraseña = contraseña;
     }
 
     public boolean verificar(String user, String contraseña) {
@@ -16,8 +16,13 @@ public class Usuario {
         } else {
             return false;
         }
-
     }
+
+    public void agregarUsuario(String user, String contraseña) {
+        Usuario usuarioNuevo = new Usuario(user, contraseña);
+        this.users_registrados.add(usuarioNuevo);
+    }
+    
 
     public String setuser(String user) {
         return this.user = user;
