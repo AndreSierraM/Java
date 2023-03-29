@@ -39,31 +39,3 @@ https://app.diagrams.net/?src=about
 
 
 
-
-     +--------------------+
-     | - nombre: String   |
-     | - edad: int        |
-     | - identificacion: int |
-     | - barrio: String   |
-     | - grado: int       |
-     | - especialidad: String |
-     +--------------------+
-     | + listaAlumnos: ArrayList<Alumno> |
-     | + inscribirAlumno(listaAlumnos: ArrayList<Alumno>): void |
-     | + Alumno(nombre: String, edad: int, identificacion: int, barrio: String, grado: int, especialidad: String) |
-     | + Alumno(nombre: String, edad: int, identificacion: int, barrio: String, grado: int) |
-     | + getNombre(): String |
-     | + setNombre(nombre: String): void |
-     | + getEdad(): int |
-     | + setEdad(edad: int): void |
-     | + getIdentificacion(): int |
-     | + setIdentificacion(identificacion: int): void |
-     | + getBarrio(): String |
-     | + setBarrio(barrio: String): void |
-     | + getGrado(): int |
-     | + setGrado(grado: int): void |
-     | + getEspecialidad(): String |
-     | + setEspecialidad(especialidad: String): void |
-     | + imprimirAlumno(): void |
-     | + calcularPago(listaAlumnos: ArrayList<Alumno>): void |
-     +--------------------+
