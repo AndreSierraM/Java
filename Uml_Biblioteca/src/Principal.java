@@ -10,7 +10,8 @@ public class Principal {
 
         boolean seguirEnMenu = true;
         while (seguirEnMenu) {
-            if (usuario == null) { // si el usuario no ha ingresado aún
+            if (usuario == null) { 
+                System.out.println("----- Bienvenido a la libreria -----");
                 System.out.println("----- Ingresar Usuario -----");
                 System.out.println("1. Ingresar");
                 System.out.println("2. Registrarse");
@@ -24,11 +25,7 @@ public class Principal {
                         String contraseña = scanner.nextLine();
                         usuario = new Usuario("", ""); // se crea una instancia vacía de Usuario
                         usuario.verificar(user, contraseña); // se llama al método en la instancia creada
-                        if (usuario != null) {
-                            System.out.println("Ingreso exitoso.");
-                        } else {
-                            System.out.println("Usuario y/o contraseña incorrectos.");
-                        }
+                        System.out.println("Ingreso exitoso.");
                         break;
                     case 2:
                         System.out.println("Ingrese el usuario:");
