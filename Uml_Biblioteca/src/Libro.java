@@ -1,8 +1,9 @@
-public class Libro {
 
+public class Libro {
     private String titulo;
     private String autor;
     private int codigo;
+    
 
     public Libro(String titulo, String autor, int codigo) {
         this.titulo = titulo;
@@ -14,24 +15,23 @@ public class Libro {
         return titulo;
     }
 
-    public String getAutor() {
-        return autor;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
     }
 
     public void setAutor(String autor) {
         this.autor = autor;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-
 }
