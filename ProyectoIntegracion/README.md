@@ -1,18 +1,9 @@
-## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
-## Folder Structure
+## Proyecto 
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Sistema de gestión de empleados:
+Se pueden crear clases abstractas como "Empleado" y "Departamento" con métodos abstractos como "calcularSalario()" y "calcularGastos()".
+Las subclases como "EmpleadoHora" y "EmpleadoAsalariado" pueden implementar estos métodos abstractos de manera diferente.
+El polimorfismo se puede utilizar para llamar a los métodos de "Empleado" y "Departamento" utilizando una lista de objetos de empleados y departamentos.
+El try-catch se puede utilizar para manejar excepciones, por ejemplo, si se intenta agregar un empleado a un departamento que ya está lleno
