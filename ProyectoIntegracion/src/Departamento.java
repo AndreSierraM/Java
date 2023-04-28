@@ -1,5 +1,4 @@
-public class App {
-  public static void main(String[] args) throws Exception {
+public abstract class Departamento {
     /*
      * Sistema de gestión de empleados: Se pueden crear clases abstractas como
      * "Empleado" y "Departamento" con métodos abstractos como "calcularSalario()" y
@@ -11,13 +10,22 @@ public class App {
      * intenta agregar un empleado a un departamento que ya está lleno
      */
 
-    try {
-      int[] myNumbers = { 1, 2, 3 };
-      System.out.println(myNumbers[2]);
-    } catch (Exception e) {
-      System.out.println("Cuidado, ha ocurrido un error.");
-    } finally {
-      System.out.println("El bloque try-catch ha finalizado.");
+    private String nombre;
+    private int numeroEmpleados;
+    private int numeroMaximoEmpleados;
+    private int gastos;
+    private Empleado[] empleados;
+
+    public Departamento(String nombre, int numeroMaximoEmpleados, int gastos, Empleado[] empleados) {
+        this.nombre = nombre;
+        this.numeroMaximoEmpleados = numeroMaximoEmpleados;
+        this.gastos = gastos;
+        this.empleados = empleados;
+
     }
-  }
+
+    public abstract void calcularGastos();
+
+    public abstract void calcularSalario();
+
 }
