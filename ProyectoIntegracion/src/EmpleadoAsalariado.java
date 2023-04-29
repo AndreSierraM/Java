@@ -1,21 +1,10 @@
-public class EmpleadoAsalariado  extends Empleado{
-
-    public EmpleadoAsalariado(String nombre, int salario) {
+public class EmpleadoAsalariado extends Empleado {
+    public EmpleadoAsalariado(String nombre, double salario) {
         super(nombre, salario);
-        
-    }
-        
-       
-    
-
-    @Override
-    public void calcularGastos() {
-        
     }
 
     @Override
-    public void calcularSalario() {
-
+    public double calcularSalario() {
+        return getSalario();
     }
-    
 }

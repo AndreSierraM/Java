@@ -1,15 +1,30 @@
-public abstract class Empleado {
 
+public class Empleado {
     private String nombre;
-    private int salario;
+    private double salario;
 
-    public Empleado(String nombre, int salario) {
+    public Empleado(String nombre, double salario) {
         this.nombre = nombre;
         this.salario = salario;
     }
+    /* metodo   */
+    public double calcularSalario() {
+        return salario;
+    }
 
-    public abstract void calcularGastos();
+    public String getNombre() {
+        return nombre;
+    }
 
-    public abstract void calcularSalario();
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
 }

@@ -1,31 +1,51 @@
-public abstract class Departamento {
-    /*
-     * Sistema de gestión de empleados: Se pueden crear clases abstractas como
-     * "Empleado" y "Departamento" con métodos abstractos como "calcularSalario()" y
-     * "calcularGastos()". Las subclases como "EmpleadoHora" y "EmpleadoAsalariado"
-     * pueden implementar estos métodos abstractos de manera diferente. El
-     * polimorfismo se puede utilizar para llamar a los métodos de "Empleado" y
-     * "Departamento" utilizando una lista de objetos de empleados y departamentos.
-     * El try-catch se puede utilizar para manejar excepciones, por ejemplo, si se
-     * intenta agregar un empleado a un departamento que ya está lleno
-     */
+import java.util.ArrayList;
 
+public class Departamento {
     private String nombre;
-    private int numeroEmpleados;
-    private int numeroMaximoEmpleados;
-    private int gastos;
-    private Empleado[] empleados;
+    private int capacidad;
+    private ArrayList<Empleado> empleados;
 
-    public Departamento(String nombre, int numeroMaximoEmpleados, int gastos, Empleado[] empleados) {
+    public Departamento(String nombre, int capacidad) {
         this.nombre = nombre;
-        this.numeroMaximoEmpleados = numeroMaximoEmpleados;
-        this.gastos = gastos;
-        this.empleados = empleados;
-
+        this.capacidad = capacidad;
+        this.empleados = new ArrayList<Empleado>();
     }
 
-    public abstract void calcularGastos();
+    public String getNombre() {
+        return nombre;
+    }
 
-    public abstract void calcularSalario();
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public ArrayList<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void agregarEmpleado(Empleado empleado) throws DepartamentoLlenoException {
+        if (empleados.size() >= capacidad) {
+            throw new DepartamentoLlenoException();
+        }
+
+        empleados.add(empleado);
+    }
+
+    public double calcularGastos() {
+        double gastos = 0.0;
+
+        for (Empleado empleado : empleados) {
+            gastos += empleado.calcularSalario();
+        }
+
+        return gastos;
+    }
 }
