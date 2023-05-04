@@ -6,6 +6,12 @@ public class EmpleadoHora extends Empleado {
         this.horasTrabajadas = horasTrabajadas;
     }
 
+    public EmpleadoHora(String nombre, int horasTrabajadas) {
+        super(nombre, 30000.0); 
+        this.horasTrabajadas = horasTrabajadas;
+    }
+    
+
     public int getHorasTrabajadas() {
         return horasTrabajadas;
     }
