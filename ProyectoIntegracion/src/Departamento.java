@@ -10,6 +10,12 @@ public class Departamento {
         this.capacidad = capacidad;
         this.empleados = new ArrayList<Empleado>();
     }
+    public Departamento(String nombre) {
+        this.nombre = nombre;
+        this.capacidad = 10; 
+        this.empleados = new ArrayList<Empleado>();
+    }
+    
 
     public String getNombre() {
         return nombre;

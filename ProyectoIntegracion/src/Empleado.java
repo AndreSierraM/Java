@@ -7,6 +7,11 @@ public class Empleado {
         this.nombre = nombre;
         this.salario = salario;
     }
+    public Empleado(String nombre) {
+        this.nombre = nombre;
+        this.salario = 1600000.0; 
+    }
+    
     /* metodo   */
     public double calcularSalario() {
         return salario;
