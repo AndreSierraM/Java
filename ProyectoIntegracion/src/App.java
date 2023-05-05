@@ -52,24 +52,33 @@ public class App {
     }
 
     private static void agregarEmpleado(Departamento departamento, Scanner sc) {
-        System.out.println("Ingrese el nombre del empleado: ");
+        System.out.print("");
+        System.out.print("Ingrese el nombre del empleado: ");
         String nombre = sc.nextLine();
-        System.out.println("Ingrese el salario del empleado: ");
+        System.out.print("Ingrese el salario del empleado: ");
         double salario = sc.nextDouble();
-        System.out.println("Ingrese el tipo de empleado: ");
+        System.out.println("");
+        System.out.println("Tipos de empleados disponibles:");
         System.out.println("1. Empleado asalariado");
         System.out.println("2. Empleado por hora");
+        System.out.print("Ingrese el tipo de empleado: ");
         int tipo = sc.nextInt();
         sc.nextLine();
 
         Empleado empleado;
         if (tipo == 1) {
             empleado = new EmpleadoAsalariado(nombre, salario);
+            /*
+             * empleado = new EmpleadoAsalariado(nombre);
+             */
         } else if (tipo == 2) {
             System.out.println("Ingrese las horas trabajadas:");
             int horasTrabajadas = sc.nextInt();
             sc.nextLine();
             empleado = new EmpleadoHora(nombre, salario, horasTrabajadas);
+            /*
+             * empleado = new EmpleadoHora(nombre, horasTrabajadas);
+             */
         } else {
             System.out.println("Tipo de empleado inválido");
             return;
