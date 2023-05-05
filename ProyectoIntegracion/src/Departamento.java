@@ -5,11 +5,14 @@ public class Departamento {
     private int capacidad;
     private ArrayList<Empleado> empleados;
 
+
+    // Constructor
     public Departamento(String nombre, int capacidad) {
         this.nombre = nombre;
         this.capacidad = capacidad;
         this.empleados = new ArrayList<Empleado>();
     }
+    // Constructor sobrecargado
     public Departamento(String nombre) {
         this.nombre = nombre;
         this.capacidad = 10; 
@@ -37,6 +40,10 @@ public class Departamento {
         return empleados;
     }
 
+
+    
+
+    // Metodos 
     public void agregarEmpleado(Empleado empleado) throws DepartamentoLlenoException {
         if (empleados.size() >= capacidad) {
             throw new DepartamentoLlenoException();
