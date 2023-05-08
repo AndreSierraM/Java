@@ -22,14 +22,15 @@ public class App {
 
         do {
             System.out.println("Recursos humanos LOS POLLOS HERMANOS");
+            System.out.println("");
             System.out.println("1. Agregar empleado");
             System.out.println("2. Calcular gastos del departamento");
             System.out.println("3. Mostrar información de los empleados");
             System.out.println("0. Salir");
             System.out.print("Ingrese el número de la opción que desea: ");
-            op = sc.nextInt();
-            sc.nextLine();
-
+            op = sc.nextInt(); 
+            sc.nextLine(); 
+ 
             switch (op) {
                 case 1:
                     agregarEmpleado(departamento, sc);
